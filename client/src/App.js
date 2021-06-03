@@ -30,12 +30,14 @@ export default function App () {
   };
 
   return (
-    <div>
+    <>
       <SavedList list={[ /* This is stretch */]} />
       <Switch>
         <Route path='/movies/:id' component={Movie} />
-        <Route path='/' render={(props) => <MovieList history={props.history} movies={movieList}/>} />
+        <Route path='/' render={(props) => 
+        <MovieList history={props.history} movies={movieList}/>
+        } />
       </Switch>
-    </div>
+    </>
   );
 }
