@@ -26,14 +26,16 @@ export default function App () {
   }, []);
 
   const addToSavedList = id => {
-    // This is stretch. Prevent the same movie from being "saved" more than once
+    if (!saved.includes(id)){
+      setSaved([...saved, id])
+    }
   };
 
   return (
     <>
-      <SavedList list={[ /* This is stretch */]} />
+      <SavedList saved={saved} movieList={movieList}/>
       <Switch>
-        <Route path='/movies/:id' component={Movie} />
+        <Route path='/movies/:id' render={() => <Movie addToSavedList={addToSavedList}/>}  />
         <Route path='/' render={(props) => 
         <MovieList history={props.history} movies={movieList}/>
         } />

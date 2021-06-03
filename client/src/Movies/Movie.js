@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import MovieCard from './MovieCard'
 
-export default function Movie(props) {
+export default function Movie({addToSavedList}) {
+
   const [movie, setMovie] = useState();
 
   const {id} = useParams();
@@ -40,7 +41,7 @@ export default function Movie(props) {
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <div className="save-button" onClick={() => addToSavedList(id)}>Save</div>
     </div>
   );
 }
