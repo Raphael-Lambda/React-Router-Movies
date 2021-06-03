@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList'
+import Movie from './Movies/Movie'
 
 
 export default function App () {
@@ -31,8 +32,10 @@ export default function App () {
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />
-      <Route path='/' render={(props) => <MovieList history={props.history} movies={movieList}/>} />
-
+      <Switch>
+        <Route path='/movies/:id' component={Movie} />
+        <Route path='/' render={(props) => <MovieList history={props.history} movies={movieList}/>} />
+      </Switch>
     </div>
   );
 }
